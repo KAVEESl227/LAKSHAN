@@ -1,0 +1,12 @@
+import makeWASocket from '@itsukichan/baileys'
+
+const suki = makeWASocket({
+    // can provide additional config here
+    printQRInTerminal: false //need to be false
+})
+
+if (!suki.authState.creds.registered) {
+    const number = 'XXXXXXXXXXX'
+    const code = await suki.requestPairingCode(number) // or await suki.requestPairingCode(number, 'CODEOTPS') custom your pairing code
+    console.log(code)
+}
